@@ -1,0 +1,132 @@
+<ul class="list-unstyled components">
+    <!-- Menu do Administrador -->
+    <?php if(isset($user) && $user->profile_page == "admin.php"){ ?>
+
+        <li>
+            <a href="?op=painel">
+                <i class="fa fa-desktop"></i>
+                Painel Admin
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-users"></i>
+                Cadastros
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu"> <!-- Teste de opções esta no VALIDATE.PHP -->
+                <li>
+                    <a href="?op=add_user"><i class="fa fa-plus-square"></i>Usuarios</a>
+                </li>
+
+                <li>
+                    <a href="?op=add_category"><i class="fa fa-plus-square"></i>Categorias</a>
+                </li>
+
+                <li>
+                    <a href="?op=add_subcategory"><i class="fa fa-plus-square"></i>Sub-Categorias</a>
+                </li>
+
+                <li>
+                    <a href="?op=add_product"><i class="fa fa-plus-square"></i>Produtos</a>
+                </li>
+
+                <li>
+                    <a href="?op=add_tipopg"><i class="fa fa-plus-square"></i>Tipos Pagamentoos</a>
+                </li>
+
+                <li>
+                    <a href="?op=add_unmd"><i class="fa fa-plus-square"></i>Unidade de Medidas</a>
+                </li>
+
+                <li>
+                    <a href="?op=list_users"><i class="fa fa-list"></i>Gerenciar</a>
+                </li>
+                
+            </ul>
+        </li>
+
+        <li class="active">
+            <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-shopping-cart"></i>
+                Gerenciar
+            </a>
+            
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li>
+                    <a href="?op=list_product"><i class="fa fa-list"></i>Produtos</a>
+                </li>
+            </ul>
+
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li>
+                    <a href="?op=list_categories"><i class="fa fa-list"></i>Categorias</a>
+                </li>
+            </ul>
+
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li>
+                    <a href="?op=list_sbcategories"><i class="fa fa-list"></i>Sub-Categorias</a>
+                </li>
+            </ul>
+
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li>
+                    <a href="?op=list_tipopg"><i class="fa fa-list"></i>Tipos Pagamento</a>
+                </li>
+            </ul>
+
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li>
+                    <a href="?op=list_unmd"><i class="fa fa-list"></i>Unidade de Medidas</a>
+                </li>
+            </ul>
+
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li>
+                    <a href="?op=list_users"><i class="fa fa-list"></i>Usuarios</a>
+                </li>
+            </ul>
+        
+
+        </li>
+
+        <li>
+            <a href="?op=reporty">
+                <i class="fa fa-file-pdf-o"></i>
+                Relatórios
+            </a>
+        </li>
+
+        <li>
+            <a href="?op=perfil">
+                <i class="fa fa-user"></i>
+                Perfil
+            </a>
+        </li>
+
+    <?php } elseif(isset($user) && $user[6] == "common"){ ?>
+        <li class="active">
+            <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-bell"></i>
+                Chamados
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li>
+                    <a href="?option=add_call"><i class="fa fa-plus-square"></i>Cadastrar</a>
+                </li>
+
+                <li>
+                    <a href="?option=list_calls"><i class="fa fa-list"></i>Gerenciar</a>
+                </li>
+                
+            </ul>
+        </li>
+    <?php } ?>
+    <li>
+        <a href="<?=$GLOBALS['project_index'];?>/controllers/logout.php"> <!-- //?op=Encerrar"> -->
+            <i class="fa fa-power-off"></i>
+            Encerrar
+        </a>
+    </li>
+</ul>

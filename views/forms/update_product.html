@@ -1,0 +1,19 @@
+<form action="<?=$GLOBALS['project_index'];?>/controllers/product.php" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="action" value="update">
+	<input type="hidden" name="id_product" value="<?=$product[0]['id_product'];?>">
+
+	<label> Nome Produto: </label><br>
+	<input class="form-control" type="text" placeholder="Produto" name="product_name" required value="<?=$product[0]['product_name'];?>"><br><br>
+	
+	<label> Cod. Barra: </label><br>
+	<input class="form-control" type="text" placeholder="Cod. Barra" name="product_code" required value="<?=$product[0]['product_code'];?>"><br><br>
+
+	<label> Preço: </label><br>
+	<input class="form-control" type="text" placeholder="Preço" name="product_price" required value="<?=$product[0]['product_price'];?>"><br><br>
+
+	<label> Estoque: </label><br>
+	<input class="form-control" type="text" placeholder="Estoque" name="product_stock" required value="<?=$product[0]['product_stock'];?>"><br><br>
+
+	<button class="btn btn-secondary"> Gr@v@r </button>
+
+</form>

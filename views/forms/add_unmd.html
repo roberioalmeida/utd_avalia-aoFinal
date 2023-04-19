@@ -1,0 +1,12 @@
+<form action="<?=$GLOBALS['project_index'];?>controllers/unmd.php" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="action" value="insert">
+
+	<label> Codigo: </label><br>
+	<input class="form-control" type="text" placeholder="Codigo" name="unmd_codigo" required><br><br>
+
+	<label> Descriçao: </label><br>
+	<input class="form-control" type="text" placeholder="Descriçao" name="unmd_name" required><br><br>
+
+	<button class="btn btn-secondary"> Cadastrar </button>
+
+</form>

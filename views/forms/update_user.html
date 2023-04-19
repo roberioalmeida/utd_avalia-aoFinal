@@ -1,0 +1,47 @@
+<h1> Atualização de Usuário </h1><hr>
+<form action="<?=$GLOBALS['project_index'];?>/controllers/user.php" method="POST" enctype="multipart/form_data">
+	<input type="hidden" value="update" name="action">
+	
+	<label> Nome Completo: </label><br>
+	<input class="form-control" type="text" placeholder="Digite seu nome" name="user_name" required value="<?=$person[0]['user_name'];?>"><br><br>
+
+	<label> Email: </label><br>
+	<input class="form-control" type="email" placeholder="Digite seu email" name="user_email" required><br><br>
+
+	<label> Senha: </label><br>
+	<input class="form-control" type="password" placeholder="Digite seu senha" name="user_password" required><br><br>
+
+	<label> Telefone: </label><br>
+	<input class="form-control" type="text" placeholder="Digite seu telefone" name="user_phone" required><br><br>
+
+	<label> Celular: </label><br>
+	<input class="form-control" type="text" placeholder="Digite seu telefone celular" name="user_cellphone" required ><br><br>
+
+	<label> CPF: </label><br>
+	<input class="form-control" type="text" placeholder="Digite seu CPF" name="user_cpf" required><br><br>
+
+	<label> Endereço: </label><br>
+	<input class="form-control" type="text" placeholder="Digite seu endereço" name="user_address" required><br><br>
+
+	<label> Data de nascimento: </label><br>
+	<input class="form-control" type="date" placeholder="Digite a data de Nascimento" name="user_birth" required><br><br>
+
+	<label> Imagem: </label><br>
+	<input class="form-control" type="file" placeholder="Selecione a imagem do usuário" name="user_image" required ><br><br>
+
+	<?php if($user->profile_page == "admin.php"): ?>
+		<label> Perfil: </label><br>
+		<select class="form-control" name="profile_id">
+			<?php foreach($profiles as $p): ?>
+				<option value="<?=$p['id_profile'];?>"> 
+					<?=$p['profile_name'];?>
+				</option>
+			<?php endforeach; ?>
+		</select><br>
+	<?php else: ?>
+		<input type="hidden" value="3" name="profile_id">	
+	<?php endif; ?>
+	<input type="hidden" value="<?=$person[0]['id_user'];?>" name="id_user">
+ 
+	<button class="btn btn-secondary"> Cadastrar </button>
+</form>

@@ -1,0 +1,12 @@
+<form action="<?=$GLOBALS['project_index'];?>controllers/subcategory.php" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="action" value="insert">
+
+	<label> Nome da Sub-Categoria: </label><br>
+	<input class="form-control" type="text" placeholder="Sub-Categoria" name="subcategory_name" required><br><br>
+
+	<label> Codigo da Categoria: </label><br>
+	<input class="form-control" type="number" placeholder="Rel. com Categoria" name="category_id" required><br><br>
+
+	<button class="btn btn-secondary"> Cadastrar </button>
+
+</form>

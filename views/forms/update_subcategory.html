@@ -1,0 +1,10 @@
+<form action="<?=$GLOBALS['project_index'];?>/controllers/category.php" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="action" value="update">
+	<input type="hidden" name="id_category" value="<?=$categ[0]['id_category'];?>">
+
+	<label> Nome da Categoria: </label><br>
+	<input class="form-control" type="text" placeholder="Categoria" name="category_name" required value="<?=$categ[0]['category_name'];?>"><br><br>
+	<button class="btn btn-secondary"> Cadastrar </button>
+
+
+</form>

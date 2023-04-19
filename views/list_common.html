@@ -1,0 +1,177 @@
+<meta charset="utf-8">
+<?php
+	/**
+	*	@author: Anthony Jefferson;
+	*	@package: /view/list_common.php
+	*
+	* 	Este arquivo controla a criação e a 
+	*   visualização de dados
+	* 	em uma tabela. 
+	*
+	***/
+
+
+	//Testar se existe conteúdo!
+	#Se não existir, ele mostra a label 
+	if($table_content == false){  //$table_content = $manager->select_common
+		echo '<button class="btn btn-warning">';
+			 echo ' <i class="fa fa-thumbs-down"></i>';
+			 echo ' Não existem resultados';
+		echo '</button><br><br>';
+		#se existir conteúdo, ele cria a tabela
+	}else{
+?>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+
+	//função para guardar o id no filtro
+	function delete_reg(filter){
+		$('#value').val(filter);
+	}
+</script>
+
+
+<!-- modal para excluir -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir ????></h5>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body"> <!-- <?=$value[$filter];?> -->
+        Deseja excluir o produto <strong>"Ecluir ??"</strong>? Essa alteração não pode ser desfeita!
+        <form action="<?=$GLOBALS['project_index'].$delete_destiny;?>" method="POST">
+      			<input type="hidden" name="filter" id="value">
+      			<input type="hidden" name="action" value="delete">
+      			<button type="" class="btn btn-danger">
+      				<span class="glyphicon glyphicon-ok-sign"></span>
+      				Sim, Excluir.	
+      			</button>
+
+      			<button type="button" class="btn btn-default" data-dismiss="modal" aria-lavel="Close">
+      				<span class="glyphicon glyphicon-remove-sign"></span>
+      				Não, Cancelar.
+      			</button>
+
+      	</form>
+      </div>      
+    </div>
+  </div>
+</div>
+<table class="table table-striped table-bordered border-primary" id="myTable">
+
+	<thead style="background-color: #000; color: white;" class="text-center">
+	<?php
+		//Imprimindo os títulos
+		echo '<tr>';
+		foreach ($table_titles as $key => $value) {
+			echo '<th>',$value,'</th>';
+		}
+	?>
+		<th> Ações </th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<?php
+			foreach ($table_content as $key => $value) {
+				echo '<tr>';
+				foreach ($table_titles as $k => $v) {		
+					
+						echo '<td>',$value[$k],'</td>';
+
+				}
+				
+					echo '<td>';
+					if(isset($update) && $update == true){
+						echo '<a href="'.$update_destiny.'&filter='.($value[$filter]).'" class="btn btn-warning btn-xs">';
+							echo '<span class="fa fa-pencil"></span>';
+						echo '</a>&nbsp;'; 
+
+					}
+
+					if(isset($delete) && $delete == true){			
+							echo '<a href="#myModal" class="btn btn-danger btn-xs" data-toggle="modal" id="tooltip" title="Excluir" onclick="delete_reg(\'',$value[$filter],'\');">';
+								echo '<span class="fa fa-trash"></span>';
+							echo '</a> ';
+					}
+
+					if(isset($print) && $print == true){
+						echo '<a href="/models/print.php?&filter='.base64_encode($value[$filter]).'" target="_BLANK" class="btn btn-primary btn-xs">';
+							echo '<span class="fa fa-print"></span>';
+						echo '</a>&nbsp;';
+					}
+
+					if(isset($block) && $block == true){
+						echo '<a href="/models/print.php?&filter='.base64_encode($value[$filter]).'" target="_BLANK" class="btn btn-warning btn-xs">';
+							echo '<span class="fa fa-ban"></span>';
+						echo '</a>&nbsp;';
+					}
+
+					echo '</td>';
+				echo '</tr>';
+			}
+		?>
+	</tbody>
+</table>
+
+	<!-- Jquery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	
+	<!-- Bootstrap -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	
+	<!-- Icones -->
+	<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>    
+    
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Custom Script -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    $('#myTable').DataTable({
+		    	"lengthMenu": [
+		            [5,10, 25, 50, -1],
+		            [5,10, 25, 50, 'All'],
+		        ],
+
+		    	"language": {
+			        "sProcessing":    "Procesando...",
+			        "sLengthMenu":    "Mostrar _MENU_ registros",
+			        "sZeroRecords":   "Não se encontram resultados",
+			        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+			        "sInfo":          "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+			        "sInfoEmpty":     "Mostrando registros de 0 al 0 de un total de 0 registros",
+			        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+			        "sInfoPostFix":   "",
+			        "sSearch":        "Buscar:",
+			        "sUrl":           "",
+			        "sInfoThousands":  ",",
+			        "sLoadingRecords": "Carregando...",
+			        "oPaginate": {
+			            "sFirst":    "Primero",
+			            "sLast":    "Último",
+			            "sNext":    "Seguinte",
+			            "sPrevious": "Anterior"
+			        },
+			        "oAria": {
+			            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+			            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+			        }
+			    }
+		    });
+		});
+	</script>
+
+<?php } ?>
